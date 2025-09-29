@@ -1,8 +1,64 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IEnumerable<runo.Models.Dtos.TodoDto>
 
-<div class="text-center">
+
+<div class="">
     <h1 class="display-4">Todo list here</h1>
    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach(var item in Model){
+
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+
+                    <td>
+                        @if (item.Status == "Completed")
+                        {
+                            <span class="badge bg-success">@item.Status</span>
+                        }
+                        else if (item.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">@item.Status</span>
+                        }
+                        else if (item.Status == "Deleted")
+                        {
+                            <span class="badge bg-danger">@item.Status</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@item.Status</span>
+                        }
+                    </td>
+
+                <td>
+                    <a class="btn btn-warning" onclick="handleEdit(@item.Id)">Edit</a> |
+                    <a class="btn btn-danger" onclick="handleDelete(@item.Id)">Delete</a>
+                </td>
+            </tr>
+            }
+            
+           
+        </tbody>
+    </table>
+
+
+
 </div>
+
+<script>
+
+</script>

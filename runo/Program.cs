@@ -15,7 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddScoped<ITaskService,TaskServicecs>();
+builder.Services.AddScoped<ITodoService,TodoService>();
 
 
 var app = builder.Build();
